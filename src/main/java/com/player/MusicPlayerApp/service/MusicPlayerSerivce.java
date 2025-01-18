@@ -1,7 +1,9 @@
 package com.player.MusicPlayerApp.service;
 
 import com.player.MusicPlayerApp.model.Song;
+import com.player.MusicPlayerApp.playlistExport.ExportFormat;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface MusicPlayerSerivce {
@@ -14,4 +16,5 @@ public interface MusicPlayerSerivce {
     List<Song> getTopDailySongs(int num);
     List<Song> getAll();
     List<Song> getSongsByArtist(String artist);
+    void exportPlaylist(List<Song> songs, String filePath, ExportFormat format) throws IOException;
 }
