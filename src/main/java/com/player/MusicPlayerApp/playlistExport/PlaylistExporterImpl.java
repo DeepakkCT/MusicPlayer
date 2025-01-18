@@ -19,7 +19,7 @@ public class PlaylistExporterImpl implements PlaylistExporter {
             throw new IllegalArgumentException("Song list cannot be null or empty");
         }
 
-        // Create file with absolute path
+
         File file = new File(filePath);
         file.getParentFile().mkdirs(); // Create directories if they don't exist
 

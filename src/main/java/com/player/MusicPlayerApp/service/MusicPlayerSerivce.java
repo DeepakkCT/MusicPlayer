@@ -17,4 +17,6 @@ public interface MusicPlayerSerivce {
     List<Song> getAll();
     List<Song> getSongsByArtist(String artist);
     void exportPlaylist(List<Song> songs, String filePath, ExportFormat format) throws IOException;
+    List<Song> readFromFile(String filePath) throws IOException;
+    void displaySongs(List<Song> songs);
 }

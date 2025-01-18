@@ -4,6 +4,8 @@ import com.player.MusicPlayerApp.model.Song;
 import com.player.MusicPlayerApp.playlistExport.ExportFormat;
 import com.player.MusicPlayerApp.playlistExport.PlaylistExporter;
 import com.player.MusicPlayerApp.playlistExport.PlaylistExporterImpl;
+import com.player.MusicPlayerApp.reader.PlaylistFileReader;
+import com.player.MusicPlayerApp.reader.PlaylistFileReaderImpl;
 import com.player.MusicPlayerApp.repository.SongRepository;
 import com.player.MusicPlayerApp.repositoryImpl.SongRepositoryImpl;
 import com.player.MusicPlayerApp.service.MusicPlayerSerivce;
@@ -11,6 +13,7 @@ import com.player.MusicPlayerApp.serviceImpl.MusicPlayerServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,7 +25,8 @@ public class MusicPlayerAppApplication {
 		//SpringApplication.run(MusicPlayerAppApplication.class, args);
 		SongRepository songRepository = new SongRepositoryImpl();
 		PlaylistExporter playlistExporter = new PlaylistExporterImpl();
-		MusicPlayerSerivce musicPlayerSerivce = new MusicPlayerServiceImpl(songRepository, playlistExporter);
+		PlaylistFileReader playlistFileReader = new PlaylistFileReaderImpl();
+		MusicPlayerSerivce musicPlayerSerivce = new MusicPlayerServiceImpl(songRepository, playlistExporter, playlistFileReader);
 
 		musicPlayerSerivce.addSong("Beete Lamhe", "KK");
 		musicPlayerSerivce.addSong("Tu hi meri shab hai", "KK");
@@ -71,12 +75,6 @@ public class MusicPlayerAppApplication {
 		//System.out.println(song);
 
 
-
-
-
-
-
-
 		System.out.println("Daily Top Songs : " + musicPlayerSerivce.getTopDailySongs(2));
 		System.out.println("Top Songs : " +musicPlayerSerivce.getTopSongs(2));
 		System.out.println("Top Songs of Artist : " +musicPlayerSerivce.getTopArtistSongs("kk", 2));
@@ -91,13 +89,23 @@ public class MusicPlayerAppApplication {
 //			System.out.println("Error while exporting csv file");
 		//}
 
+//		try{
+//
+//
+//			musicPlayerSerivce.exportPlaylist(list1, "/Users/deepak.verma/Desktop/playlists/list1.tsv", ExportFormat.TSV);
+//			System.out.println("TSV file exported successfully");
+//		} catch (IOException e) {
+//			System.out.println("Error while exporting tsv file");
+//		}
+
 		try{
+			System.out.println("\nReading CSV file:");
+			List<Song> csvSongs = musicPlayerSerivce.readFromFile("/Users/deepak.verma/Desktop/playlists/list1.csv");
+			musicPlayerSerivce.displaySongs(csvSongs);
 
-
-			musicPlayerSerivce.exportPlaylist(list1, "/Users/deepak.verma/Desktop/playlists/list1.tsv", ExportFormat.TSV);
-			System.out.println("TSV file exported successfully");
-		} catch (IOException e) {
-			System.out.println("Error while exporting tsv file");
+		} catch (Exception e) {
+			System.err.println("Error reading file: " + e.getMessage());
+			e.printStackTrace();
 		}
 
 
