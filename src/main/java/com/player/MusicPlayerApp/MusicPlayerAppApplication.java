@@ -92,21 +92,21 @@ public class MusicPlayerAppApplication {
 //		try{
 //
 //
-//			musicPlayerSerivce.exportPlaylist(list1, "/Users/deepak.verma/Desktop/playlists/list1.tsv", ExportFormat.TSV);
-//			System.out.println("TSV file exported successfully");
+//			musicPlayerSerivce.exportPlaylist(list1, "/Users/deepak.verma/Desktop/playlists/list1.csv", ExportFormat.CSV);
+//			System.out.println("CSV file exported successfully");
 //		} catch (IOException e) {
-//			System.out.println("Error while exporting tsv file");
+//			System.out.println("Error while exporting csv file");
 //		}
 
-		try{
-			System.out.println("\nReading CSV file:");
-			List<Song> csvSongs = musicPlayerSerivce.readFromFile("/Users/deepak.verma/Desktop/playlists/list1.csv");
-			musicPlayerSerivce.displaySongs(csvSongs);
-
-		} catch (Exception e) {
-			System.err.println("Error reading file: " + e.getMessage());
-			e.printStackTrace();
-		}
+//		try{
+//			System.out.println("\nReading CSV file:");
+//			List<Song> csvSongs = musicPlayerSerivce.readFromFile("/Users/deepak.verma/Desktop/playlists/list1.csv");
+//			musicPlayerSerivce.displaySongs(csvSongs);
+//
+//		} catch (Exception e) {
+//			System.err.println("Error reading file: " + e.getMessage());
+//			e.printStackTrace();
+//		}
 
 
 

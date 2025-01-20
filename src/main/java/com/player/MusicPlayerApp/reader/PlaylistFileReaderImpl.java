@@ -1,6 +1,7 @@
 package com.player.MusicPlayerApp.reader;
 
 import com.player.MusicPlayerApp.model.Song;
+import org.springframework.scheduling.annotation.Async;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Async
 public class PlaylistFileReaderImpl implements PlaylistFileReader {
 
     @Override

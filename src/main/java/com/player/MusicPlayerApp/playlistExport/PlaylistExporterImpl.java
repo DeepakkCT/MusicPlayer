@@ -2,12 +2,14 @@ package com.player.MusicPlayerApp.playlistExport;
 
 
 import com.player.MusicPlayerApp.model.Song;
+import org.springframework.scheduling.annotation.Async;
 
 import java.io.*;
 import java.nio.file.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Async
 public class PlaylistExporterImpl implements PlaylistExporter {
     private static final DateTimeFormatter DATE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
